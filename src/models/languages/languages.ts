@@ -6,8 +6,6 @@ export interface Language {
 
 }
 
-
-
 export type LanguageTable = Array<[string, Language[]]>;
 
 export type LanguageMap = Map<string, Language[]>;
