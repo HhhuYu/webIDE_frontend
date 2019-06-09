@@ -5,7 +5,8 @@ import { FileExploreComponent } from "./file-explore/file-explore.component"
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'explorer', component : FileExploreComponent}
+  { path: 'explorer', component : FileExploreComponent},
+
 ];
 
 @NgModule({

@@ -42,7 +42,6 @@ import {
         this.activatedTheme = this.initEditorOptions.theme;
     }
 
-    // #region - private
     private pipeSupportedLanguages() {
         return this.handler.getAllSupportedLangs()
             .pipe(
@@ -64,9 +63,7 @@ import {
                 })
             );
     }
-    // #end region
 
-    // #region - public
     public onClearContent() { this.codeEditor.setContent(''); }
 
     public onBeautifyContent() { this.codeEditor.beautifyContent(); }
@@ -103,7 +100,7 @@ import {
         const langMode = language.lang;
         this.codeEditor.setLanguageMode(langMode);
     }
-    // #end region
+    
 }
 
 interface RunResult {

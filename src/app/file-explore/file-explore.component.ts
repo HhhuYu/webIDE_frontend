@@ -32,35 +32,7 @@ export class FileExploreComponent implements OnInit {
       setFontSize: 16,
       setIconSize: 8
   };
-  myTree = [
-    {
-      name: 'Apple',
-      id: 1,
-      options: {
-          hidden: false,
-          position: 1,
-          href: 'https://github.com/Zicrael/ngx-tree-dnd'
-        },
-      childrens: [
-        {
-          name: 'Iphone',
-          id: 2,
-          childrens: []
-        }
-      ]
-    },
-    {
-      name: 'Google',
-      id: 3,
-      childrens: [
-        {
-          name: 'Google play',
-          id: 4,
-          childrens: []
-        }
-      ]
-    }
-  ];
+  myTree 
 
   onDragStart(event) {
      this.currentEvent = ' on drag start';

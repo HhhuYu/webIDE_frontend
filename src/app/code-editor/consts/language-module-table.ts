@@ -1,4 +1,3 @@
-// language-module-table.ts
 const languageModuleTable: Array<[string, string]> = [
     ['nodejs', 'ace/mode/javascript'],
     ['java', 'ace/mode/java'],

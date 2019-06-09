@@ -9,5 +9,5 @@ export const DEFAULT_INIT_EDITOR_OPTIONS = {
    content: DEFAULT_CONTENT
 };
 export const DEFAULT_SUPPORTED_EDITOR_THEMES = [
-   'github', 'chrome', 'twilight'
+   'github', 'chrome', 'twilight', 'eclipse'
 ];

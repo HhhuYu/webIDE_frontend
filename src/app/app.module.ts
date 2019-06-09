@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { HttpClientModule }from "@angular/common/http"
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,22 +11,27 @@ import { NgxTreeDndModule } from 'ngx-tree-dnd';
 import { FileExploreComponent } from './file-explore/file-explore.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     CodeEditorComponent,
-    FileExploreComponent
+    FileExploreComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxTreeDndModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    servicesArray
+    servicesArray,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

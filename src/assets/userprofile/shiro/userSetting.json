@@ -1,0 +1,26 @@
+{
+  "fileTree": [{
+      "name": "Apple",
+      "id": "1",
+      "options": {
+        "hidden": false,
+        "position": 1,
+        "href": "https://github.com/Zicrael/ngx-tree-dnd"
+      },
+      "childrens": [{
+        "name": "Iphone",
+        "id": 2,
+        "childrens": []
+      }]
+    },
+    {
+      "name": "Google",
+      "id": 3,
+      "childrens": [{
+        "name": "Google play",
+        "id": 4,
+        "childrens": []
+      }]
+    }
+  ]
+}

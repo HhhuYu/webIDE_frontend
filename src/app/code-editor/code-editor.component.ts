@@ -1,4 +1,3 @@
-// code-editor.component.ts
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 import * as ace from 'ace-builds';
@@ -23,7 +22,6 @@ const DEFAULT_LANG_MODE = 'nodejs';
     styleUrls: ['./code-editor.component.css']
 }) export class CodeEditorComponent implements OnInit {
 
-    // #region - class members
     // ace editor object.
     private codeEditor: ace.Ace.Editor;
     // reference to beautify extension.
@@ -34,7 +32,6 @@ const DEFAULT_LANG_MODE = 'nodejs';
     @Input() initOptions: { languageMode?: string; theme?: string; content?: string; } = {};
     // currently used mode & theme editor config.
     private currentConfig: { langMode?: string, editorTheme?: string } = {};
-    // #end region
 
     constructor() { }
 
@@ -51,7 +48,7 @@ const DEFAULT_LANG_MODE = 'nodejs';
         this.setContent(this.initOptions.content || DEFAULT_INIT_CONTENT);
     }
 
-    // #region - private
+    
     private createCodeEditor(element: Element, options: any): ace.Ace.Editor {
         const editor = ace.edit(element, options);
         editor.setShowFoldWidgets(true);
@@ -70,9 +67,8 @@ const DEFAULT_LANG_MODE = 'nodejs';
         };
         return Object.assign(basicEditorOptions, extraEditorOptions);
     }
-    // #end region
 
-    // #region - public - config control
+    // public - config control
     public setLanguageMode(langMode: string): void {
         try {
             if (languageModuleMap.has(langMode)) {
@@ -101,9 +97,9 @@ const DEFAULT_LANG_MODE = 'nodejs';
     public getCurrentConfig(): Readonly<{ langMode?: string; editorTheme?: string; }> {
         return Object.freeze(this.currentConfig);
     }
-    // #end region
 
-    // #region - public - content manipulation
+
+    // public - content manipulation
     /**
      * @returns - the current editor's content.
      */
@@ -131,9 +127,9 @@ const DEFAULT_LANG_MODE = 'nodejs';
             this.editorBeautify.beautify(session);
         }
     }
-    // #end region
 
-    // #region - public - events
+
+    // public - events
     /**
      * @event OnContentChange - a proxy event to Ace 'change' event - adding additional data.
      * @param callback - recive the corrent content and 'change' event's original parameter.
@@ -144,5 +140,4 @@ const DEFAULT_LANG_MODE = 'nodejs';
             callback(content, delta);
         });
     }
-    // #end region
 }

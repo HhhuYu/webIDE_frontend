@@ -1,4 +1,3 @@
-// theme-module-table.ts
 const themeModuleTable: Array<[string, string]> = [
     ['github', 'ace/theme/github'],
     ['chrome', 'ace/theme/chrome'],
