@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FileHandlerService } from '../../services';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-file-explore',
@@ -7,15 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileExploreComponent implements OnInit {
 
+  private myTree
 
-  constructor() { }
+  constructor(private handler: FileHandlerService) { }
 
   ngOnInit() {
-
+    this.myTree = this.pipeUserProfile();
+    console.log("mytree", this.myTree);
   }
 
+  private pipeUserProfile() {
+    return this.handler.getUserProfile()
+    .pipe(
+        map((response) => {
+          console.log("Hello",response);
+        }))
+  }
 
-  title = 'Ngx-tree-dnd example';
   currentEvent: string = 'start do something';
   config = {
       showActionButtons: true,
@@ -32,7 +43,7 @@ export class FileExploreComponent implements OnInit {
       setFontSize: 16,
       setIconSize: 8
   };
-  myTree 
+  
 
   onDragStart(event) {
      this.currentEvent = ' on drag start';
