@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FileHandlerService } from '../../services';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { TreeItemOptions, TreeModel } from "../../models/treeModel/treeModel"
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-file-explore',
@@ -10,25 +12,37 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class FileExploreComponent implements OnInit {
 
-  private myTree
+  private myTree: Array<TreeModel>;
+  private currentEvent: string;
+  private config;
 
   constructor(private handler: FileHandlerService) { }
 
   ngOnInit() {
-    this.myTree = this.pipeUserProfile();
-    console.log("mytree", this.myTree);
+    // this.myTree = this.pipeUserProfile();
+    this.userProfile();
+    this.fileTreeInit()
   }
 
-  private pipeUserProfile() {
-    return this.handler.getUserProfile()
-    .pipe(
-        map((response) => {
-          console.log("Hello",response);
-        }))
+
+  public userProfile(){
+    this.handler.getUserProfile()
+      .subscribe((data: any) => {this.myTree = data["fileTree"];console.log(this.myTree)} );
   }
 
-  currentEvent: string = 'start do something';
-  config = {
+  // private pipeUserProfile() {
+  //   return this.handler.getUserProfile()
+  //     .pipe(
+  //       map((response: Array<TreeModel>) => {
+  //         console.log(response);
+  //         return response.;
+  //       }))
+  // }
+
+  private fileTreeInit() {
+
+    this.currentEvent = 'start do something';
+    this.config = {
       showActionButtons: true,
       showAddButtons: true,
       showRenameButtons: true,
@@ -42,12 +56,15 @@ export class FileExploreComponent implements OnInit {
       setItemsAsLinks: true,
       setFontSize: 16,
       setIconSize: 8
-  };
-  
+    };
+  }
+
+
+
 
   onDragStart(event) {
-     this.currentEvent = ' on drag start';
-     console.log(event);
+    this.currentEvent = ' on drag start';
+    console.log(event);
   }
   onDrop(event) {
     this.currentEvent = 'on drop';

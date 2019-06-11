@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpService } from '../http/http.service';
-import { map } from 'rxjs/operators';
+
 
 @Injectable()
 export class FileHandlerService {
@@ -11,10 +11,14 @@ export class FileHandlerService {
     this.baseUrl = environment.BASE_URL;
   }
 
+  // public getUserProfile() {
+  //   console.log('getUserProfile()');
+  //   const queryUrl = this.baseUrl + 'shiro/profile/';
+  //   return this.http.get<{ fileTree: any }>(queryUrl)
+  //     .pipe(map((body) => body.fileTree));
+  // }
+
   public getUserProfile() {
-    console.log('getUserProfile()');
-    const queryUrl = this.baseUrl + 'shiro/profile/';
-    return this.http.get<{ runResult: any }>(queryUrl)
-      .pipe(map((body) => body.runResult));
+    return this.http.get(this.baseUrl + 'shiro/profile/');
   }
 }

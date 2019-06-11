@@ -1,21 +1,23 @@
 <div class='title'>
   <h2>Simple tree</h2>
+
+
+
   <!--  ================================== -->
-  <lib-ngx-tree-component [treeData]="myTree" 
-    (ondragstart)="onDragStart($event)" 
-    (ondragenter)="onDragEnter($event)"
-    (ondragleave)="onDragLeave($event)" 
-    (ondrop)="onDrop($event)" 
-    (onallowdrop)="onAllowDrop($event)"
-    (onadditem)="onAddItem($event)" 
-    (onStartDeleteItem)="onStartDeleteItem($event)"
-    (onFinishDeleteItem)="onFinishDeleteItem($event)" 
-    (onCancelDeleteItem)="onCancelDeleteItem($event)"
-    (onStartRenameItem)="onStartRenameItem($event)" 
-    (onFinishRenameItem)="onFinishRenameItem($event)" 
-    [config]='config'>
+  <lib-ngx-tree-component [treeData]="myTree"
+    (ondragstart)="onDragStart($event)" (ondragenter)="onDragEnter($event)" (ondragleave)="onDragLeave($event)"
+    (ondrop)="onDrop($event)" (onallowdrop)="onAllowDrop($event)" (onadditem)="onAddItem($event)"
+    (onStartDeleteItem)="onStartDeleteItem($event)" (onFinishDeleteItem)="onFinishDeleteItem($event)"
+    (onCancelDeleteItem)="onCancelDeleteItem($event)" (onStartRenameItem)="onStartRenameItem($event)"
+    (onFinishRenameItem)="onFinishRenameItem($event)" [config]='config'>
   </lib-ngx-tree-component>
   <!-- =================================== -->
+
+  <!-- loading message while waiting languagesArray$ -->
+  <ng-template #loadingLanguages>
+    <span class="mx-2">Loading ...</span>
+  </ng-template>
+
   <div class='event'>Event: <span>{{currentEvent}}</span>
   </div>
 </div>
