@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileHandlerService } from '../../services';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { TreeItemOptions, TreeModel } from "../../models/treeModel/treeModel"
-import { async } from '@angular/core/testing';
+import { TreeModel } from "../../models/treeModel/treeModel"
+
 
 @Component({
   selector: 'app-file-explore',
@@ -27,7 +25,10 @@ export class FileExploreComponent implements OnInit {
 
   public userProfile(){
     this.handler.getUserProfile()
-      .subscribe((data: any) => {this.myTree = data["fileTree"];console.log(this.myTree)} );
+      .subscribe((data: Array<TreeModel>) => {
+        this.myTree = data;
+        // console.log(this.myTree)
+      } );
   }
 
   // private pipeUserProfile() {
