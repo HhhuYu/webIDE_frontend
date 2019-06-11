@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FileHandlerService } from '../../services';
 import { TreeModel } from "../../models/treeModel/treeModel"
 
@@ -10,6 +10,8 @@ import { TreeModel } from "../../models/treeModel/treeModel"
 })
 export class FileExploreComponent implements OnInit {
 
+  @Output() contentNotify = new EventEmitter();
+
   private myTree: Array<TreeModel>;
   private currentEvent: string;
   private config;
@@ -18,27 +20,9 @@ export class FileExploreComponent implements OnInit {
 
   ngOnInit() {
     // this.myTree = this.pipeUserProfile();
-    this.userProfile();
+    this.userProfile("shiro");
     this.fileTreeInit()
   }
-
-
-  public userProfile(){
-    this.handler.getUserProfile()
-      .subscribe((data: Array<TreeModel>) => {
-        this.myTree = data;
-        // console.log(this.myTree)
-      } );
-  }
-
-  // private pipeUserProfile() {
-  //   return this.handler.getUserProfile()
-  //     .pipe(
-  //       map((response: Array<TreeModel>) => {
-  //         console.log(response);
-  //         return response.;
-  //       }))
-  // }
 
   private fileTreeInit() {
 
@@ -54,16 +38,51 @@ export class FileExploreComponent implements OnInit {
       rootTitle: 'Company Tree',
       validationText: 'Enter valid company',
       minCharacterLength: 5,
-      setItemsAsLinks: true,
+      setItemsAsLinks: false,
       setFontSize: 16,
       setIconSize: 8
     };
   }
 
 
+  public userProfile(userId: String){
+    this.handler.getUserProfile(userId)
+      .subscribe((data: Array<TreeModel>) => {
+        this.myTree = data;
+        // console.log(this.myTree)
+      });
+      
+  }
+
+  public getUserFile(userId: String, filePath: String) {
+    this.handler.getUserFile(userId, filePath)
+    .subscribe((data: any) => {
+      const content = data.content
+      console.log(content)
+      this.contentNotify.emit(content);
+    })
+    
+  }
+
+  // private pipeUserProfile() {
+  //   return this.handler.getUserProfile()
+  //     .pipe(
+  //       map((response: Array<TreeModel>) => {
+  //         console.log(response);
+  //         return response.;
+  //       }))
+  // }
+
+
+
+
 
 
   onDragStart(event) {
+    const filePath = event.target.options.href
+    
+    this.getUserFile("shiro", filePath)
+
     this.currentEvent = ' on drag start';
     console.log(event);
   }

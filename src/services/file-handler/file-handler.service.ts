@@ -18,7 +18,20 @@ export class FileHandlerService {
   //     .pipe(map((body) => body.fileTree));
   // }
 
-  public getUserProfile() {
-    return this.http.get(this.baseUrl + 'shiro/profile/');
+  public getUserProfile(userId: String) {
+    const finalUrl = this.baseUrl + userId + '/profile/';
+    return this.http.get(finalUrl);
   }
+
+  public getUserFile(userId: String, filePath: String) {
+    const finalUrl = this.baseUrl + userId + "/file";
+    const requestBody = {
+      operation: "get",
+      filePath: filePath
+    }
+    return this.http.post(finalUrl, requestBody);
+
+  }
+  
+
 }

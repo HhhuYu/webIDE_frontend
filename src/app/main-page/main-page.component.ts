@@ -15,7 +15,8 @@ import {
     selector: 'app-main-page',
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.css']
-}) export class MainPageComponent implements OnInit {
+}) 
+export class MainPageComponent implements OnInit {
 
     public activatedTheme: string;
     // indicate if the initial languages api request failed or not.
@@ -67,6 +68,10 @@ import {
     public onClearContent() { this.codeEditor.setContent(''); }
 
     public onBeautifyContent() { this.codeEditor.beautifyContent(); }
+
+    public onChangeContent(content) {
+        this.codeEditor.setContent(content);
+    }
 
     public onRunContent() {
         const code = this.codeEditor.getContent();
