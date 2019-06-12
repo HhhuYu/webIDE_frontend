@@ -33,6 +33,7 @@ const DEFAULT_LANG_MODE = 'nodejs';
     // currently used mode & theme editor config.
     private currentConfig: { langMode?: string, editorTheme?: string } = {};
 
+
     constructor() { }
 
     ngOnInit() {
@@ -59,7 +60,8 @@ const DEFAULT_LANG_MODE = 'nodejs';
         const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
             highlightActiveLine: true,
             minLines: 14,
-            maxLines: Infinity,
+            maxLines: 30,
+            animatedScroll: true
         };
         const extraEditorOptions = {
             enableBasicAutocompletion: true,
