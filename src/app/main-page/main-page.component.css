@@ -1,39 +1,22 @@
-div.label-box {
-  border-top-left-radius: .5rem !important;
-  border-top-right-radius: .5rem !important;
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
 }
 
-.form-control {
-  border-radius: 0 !important;
+.web-ide {
+  display: flex;
+  flex-direction: row;
 }
 
-.form-control:disabled {
-  background-color: #ffffff !important;
+.file-explore {
+  flex-grow: 0;
+  /* border: 1px solid #ccc; */
+  padding: .5rem 1rem;
 }
 
-.output {
-  border-bottom-left-radius: .5rem !important;
-  border-bottom-right-radius: .5rem !important;
-}
-
-.btn-beautify {
-  color: #ffffff;
-  background-color: #e83e8c;
-}
-
-select.languages-select {
-  cursor: pointer;
-}
-
-select.languages-select>option {
-  display: block;
-  background: ghostwhite;
-}
-
-select.languages-select:focus>option:checked {
-  font-weight: bold;
-}
-
-button.cant-click {
-  cursor: not-allowed;
+.file-editor {
+  flex-grow: 1;
+  min-height: 200px;
+  padding: .5rem 1rem;
 }

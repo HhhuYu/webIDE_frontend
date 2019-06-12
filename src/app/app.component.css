@@ -3,20 +3,3 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
-
-.web-ide {
-  display: flex;
-  flex-direction: row;
-}
-
-.file-explore {
-  flex-grow: 0;
-  /* border: 1px solid #ccc; */
-  padding: .5rem 1rem;
-}
-
-.file-editor {
-  flex-grow: 1;
-  min-height: 200px;
-  padding: .5rem 1rem;
-}

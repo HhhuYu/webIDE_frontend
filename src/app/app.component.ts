@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { MainPageComponent } from "./main-page/main-page.component"
-import { FileExploreComponent } from "./file-explore/file-explore.component"
+import { Router } from '@angular/router';
 
+
+import { AuthenticationService } from './_services';
+import { User } from './_models';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +12,17 @@ import { FileExploreComponent } from "./file-explore/file-explore.component"
 })
 export class AppComponent {
 
-  @ViewChild(MainPageComponent) mainPage: MainPageComponent;
+  currentUser: User;
 
-  @ViewChild(FileExploreComponent) fileTree: FileExploreComponent;
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
-  title = 'IDE';
-
-
-
-  onContentChange(content) {
-    console.log(content)
-    this.mainPage.onChangeContent(content);
-    // window.alert('You will be notified when the product goes on sale');
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
