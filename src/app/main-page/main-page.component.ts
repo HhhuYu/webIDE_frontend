@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditorViewComponent } from "../editor-view/editor-view.component"
 import { FileExploreComponent } from "../file-explore/file-explore.component"
 import { ServerHandlerService } from './../../services';
@@ -10,7 +10,6 @@ import { ServerHandlerService } from './../../services';
 }) 
 export class MainPageComponent implements OnInit {
     @ViewChild(EditorViewComponent) editorView: EditorViewComponent;
-
     @ViewChild(FileExploreComponent) fileTree: FileExploreComponent;
   
 
