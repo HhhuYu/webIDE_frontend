@@ -19,6 +19,7 @@ import { routing } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
+import { AdminComponent } from './admin';
 import { EditorViewComponent } from './editor-view/editor-view.component';
 
 
@@ -30,7 +31,8 @@ import { EditorViewComponent } from './editor-view/editor-view.component';
     FileExploreComponent,
     HomeComponent,
     LoginComponent,
-    EditorViewComponent
+    EditorViewComponent,
+    AdminComponent
 
   ],
   imports: [
@@ -44,8 +46,7 @@ import { EditorViewComponent } from './editor-view/editor-view.component';
   providers: [
     servicesArray,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

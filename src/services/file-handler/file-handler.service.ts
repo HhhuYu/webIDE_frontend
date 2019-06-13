@@ -19,12 +19,12 @@ export class FileHandlerService {
   // }
 
   public getUserProfile(userId: String) {
-    const finalUrl = this.baseUrl + userId + '/profile/';
+    const finalUrl = `${this.baseUrl}/${userId}/profile`;
     return this.http.get(finalUrl);
   }
 
   public getUserFile(userId: String, filePath: String) {
-    const finalUrl = this.baseUrl + userId + "/file";
+    const finalUrl = `${this.baseUrl}/${userId}/file`;
     const requestBody = {
       operation: "get",
       filePath: filePath

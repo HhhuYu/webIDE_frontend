@@ -14,14 +14,14 @@ export class ServerHandlerService {
 
     public getAllSupportedLangs() {
         console.log('getAllSupportedLangs()');
-        const queryUrl = this.baseUrl + 'langs/';
+        const queryUrl = this.baseUrl + '/langs/';
         return this.http.get<{ langs: LanguageTable }>(queryUrl)
             .pipe( map((body) => body.langs) );
     }
 
     public postCodeToRun(code: string, language: { id: string, version: string }) {
         console.log('postCodeToRun()');
-        const queryUrl = this.baseUrl + 'run/';
+        const queryUrl = this.baseUrl + '/run/';
         const requestBody = { program: code, lang: language.id, version: language.version };
         return this.http.post<{ runResult: any }>(queryUrl, requestBody)
             .pipe( map((body) => body.runResult) );
