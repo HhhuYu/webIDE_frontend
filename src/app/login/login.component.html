@@ -1,12 +1,13 @@
 ﻿<div class="alert alert-info">
-    <strong>Normal User</strong> - U: user P: user<br />
-    <strong>Administrator</strong> - U: admin P: admin
+    <strong>User</strong> - U: shiro@js.com  P: 123456<br />
+    <strong>Admin</strong> - U: jiangdoor@jd.com  P: 123456<br />
+    
 </div>
 <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <label for="email">Email</label>
+        <input type="email" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
@@ -24,3 +25,7 @@
     </div>
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 </form>
+
+<div class="form-group">
+    <a href="register">Register</a>
+</div>

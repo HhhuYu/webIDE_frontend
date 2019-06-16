@@ -4,13 +4,14 @@ import { HomeComponent } from './home';
 import { AdminComponent } from './admin';
 import { LoginComponent } from './login';
 import { MainPageComponent } from "./main-page/main-page.component"
+import { RegisterComponent } from "./register/register.component"
 import { AuthGuard } from './_guards';
 import { Role } from './_models';
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component: MainPageComponent,
         canActivate: [AuthGuard]
     },
     {
@@ -24,9 +25,10 @@ const appRoutes: Routes = [
         data: { roles: [Role.Admin] }
     },
     {
-        path: 'main',
-        component: MainPageComponent
+        path: 'register',
+        component: RegisterComponent
     },
+
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -12,8 +12,6 @@ import { FileExploreComponent } from './file-explore/file-explore.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
 import { routing } from './app.routing';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -21,6 +19,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { AdminComponent } from './admin';
 import { EditorViewComponent } from './editor-view/editor-view.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -32,7 +31,8 @@ import { EditorViewComponent } from './editor-view/editor-view.component';
     HomeComponent,
     LoginComponent,
     EditorViewComponent,
-    AdminComponent
+    AdminComponent,
+    RegisterComponent
 
   ],
   imports: [
