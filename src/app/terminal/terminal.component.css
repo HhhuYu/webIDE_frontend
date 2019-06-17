@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    background-color: #eff4f7;
+    font-family: "PingFang SC", "Lantinghei SC", "Helvetica Neue", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+}
+
+.window {
+    /*border: 1px solid gray;*/
+    width: 60%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(26, 26, 26, 0.1);
+}
+
+.title {
+    font-size: 12px;
+    background-color: gray;
+    color: white;
+    padding: 3px 4px;
+    text-align: center;
+}
+
+#content {
+    background: white;
+    color: black;
+    padding-left: 4px;
+    padding-top: 3px;
+    font-size: 12px;
+    height: 250px;
+    overflow: scroll;
+}
+
+#content input {
+    background: white;
+    color: black;
+    border: none;
+    outline: none;
+    width: 60%;
+    box-sizing: border-box;
+    padding-left: 0;
+}

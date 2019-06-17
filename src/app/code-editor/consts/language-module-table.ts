@@ -5,6 +5,8 @@ const languageModuleTable: Array<[string, string]> = [
     ['csharp', 'ace/mode/csharp'],
     ['php', 'ace/mode/php'],
     ['ruby', 'ace/mode/ruby'],
+    ['c', 'ace/mode/c'],
+    ['markdown', 'ace/mode/markdown']
 ];
 
 export const languageModuleMap: Map<string, string> = new Map(languageModuleTable);

@@ -1,13 +1,13 @@
-<div class="web-ide">
-    <div class="file-explore">
-        <app-file-explore (contentNotify)="onContentChange($event)"></app-file-explore>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-fluid">
+      <app-file-explore (contentNotify)="onContentChange($event)"></app-file-explore>
     </div>
-
-    <div class="file-editor">
-        <app-editor-view></app-editor-view>
+    <div class="col-sm">
+      <app-editor-view></app-editor-view>
     </div>
-
+    <div class="col-sm">
+      <app-terminal></app-terminal>
+    </div>
+  </div>
 </div>
-
-
- 

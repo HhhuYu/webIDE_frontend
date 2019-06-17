@@ -99,6 +99,12 @@ export class EditorViewComponent implements OnInit {
     }
   }
 
+  public setLanguageMode(format: string) {
+    if(format) {
+      this.codeEditor.setLanguageMode(format);
+    }
+  }
+
   public onChangeLanguageMode(event: any) {
     const selectedIndex = event.target.selectedIndex;
     const language = this.languagesArray[selectedIndex];

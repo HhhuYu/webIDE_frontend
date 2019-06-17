@@ -45,23 +45,42 @@ export class FileExploreComponent implements OnInit {
   }
 
 
-  public userProfile(userId: String){
+  public userProfile(userId: String) {
     this.handler.getUserProfile(userId)
       .subscribe((data: Array<TreeModel>) => {
         this.myTree = data;
         // console.log(this.myTree)
       });
-      
+
+  }
+
+  public fileExtensionMap: Map<String, String> = new Map([
+    ["md", "markdown"],
+    ["java", "java"],
+    ["c", "c"],
+    ["py", "python"]
+  ])
+
+  private getFileFormat(filePath: String) {
+    const paramList = filePath.split('.');
+    const format = paramList[paramList.length - 1];
+    if (this.fileExtensionMap.has(format)) {
+      const language = this.fileExtensionMap.get(format)
+      console.log(language)
+      return language;
+    }
   }
 
   public getUserFile(userId: String, filePath: String) {
     this.handler.getUserFile(userId, filePath)
-    .subscribe((data: any) => {
-      const content = data.content
-      console.log(content)
-      this.contentNotify.emit(content);
-    })
-    
+      .subscribe((data: any) => {
+        const content = data.content
+        const format = this.getFileFormat(filePath);
+        this.contentNotify.emit({
+          format: format,
+          content: content
+        })
+      })
   }
 
   // private pipeUserProfile() {
@@ -80,7 +99,7 @@ export class FileExploreComponent implements OnInit {
 
   onDragStart(event) {
     const filePath = event.target.options.href
-    
+
     this.getUserFile("shiro", filePath)
 
     this.currentEvent = ' on drag start';

@@ -20,9 +20,10 @@ export class MainPageComponent implements OnInit {
     }
 
     
-  onContentChange(content) {
-    console.log(content)
-    this.editorView.onChangeContent(content);
+  onContentChange(info) {
+    console.log(info.content)
+    this.editorView.onChangeContent(info.content);
+    this.editorView.setLanguageMode(info.format);
     // window.alert('You will be notified when the product goes on sale');
   }
 }

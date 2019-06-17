@@ -20,7 +20,12 @@ import { LoginComponent } from './login';
 import { AdminComponent } from './admin';
 import { EditorViewComponent } from './editor-view/editor-view.component';
 import { RegisterComponent } from './register/register.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
+import { NgTerminalModule } from 'ng-terminal';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     EditorViewComponent,
     AdminComponent,
-    RegisterComponent
+    RegisterComponent,
+    TerminalComponent
 
   ],
   imports: [
@@ -41,7 +47,9 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing
+    routing,
+    SocketIoModule.forRoot(config),
+    NgTerminalModule
   ],
   providers: [
     servicesArray,
