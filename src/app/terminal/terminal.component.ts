@@ -18,6 +18,8 @@ export class TerminalComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(NgTerminalComponent) child: NgTerminal;
 
+  command: String;
+
   dirs: String[];
   results: String[];
   private _OverSub: Subscription;
@@ -39,6 +41,7 @@ export class TerminalComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   ngOnInit() {
+    this.terminalService.ready();
     this._OverSub = this.terminalService.over.subscribe(dir => {
       console.log(dir);
       this.child.write("[ " + location.hostname + " " + dir + " ]:")
