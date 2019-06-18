@@ -11,12 +11,20 @@ import {
   DEFAULT_RUN_ERROR_MESSAGE
 } from './default-options';
 
+import { FileHandlerService } from "./../../services/file-handler/file-handler.service"
+import { UserService, AuthenticationService } from '../_services';
+import { User } from '../_models';
+
+
 @Component({
   selector: 'app-editor-view',
   templateUrl: './editor-view.component.html',
   styleUrls: ['./editor-view.component.css']
 })
 export class EditorViewComponent implements OnInit {
+
+  currentFilePath: String;
+  currentUser: User;
 
   public activatedTheme: string;
   // indicate if the initial languages api request failed or not.
@@ -36,7 +44,14 @@ export class EditorViewComponent implements OnInit {
   // observable of the run request output.
   public output$: Observable<string>;
 
-  constructor(private handler: ServerHandlerService) { }
+  constructor(
+    private handler: ServerHandlerService,
+    private file_handler: FileHandlerService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService
+  ) {
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
 
   ngOnInit() {
     this.languagesArray$ = this.pipeSupportedLanguages();
@@ -100,8 +115,30 @@ export class EditorViewComponent implements OnInit {
   }
 
   public setLanguageMode(format: string) {
-    if(format) {
+    if (format) {
       this.codeEditor.setLanguageMode(format);
+    }
+  }
+
+  public setCurrentFilePath(filePath: String) {
+    if (filePath) {
+      this.currentFilePath = filePath;
+    }
+  }
+
+  public onSaveContent() {
+    if (this.currentFilePath) {
+      const content = this.codeEditor.getContent();
+      const path = this.currentFilePath;
+      const username = this.currentUser.username;
+      this.file_handler.saveUserFile(username, path, content)
+      .subscribe((data: any) => {
+        if(data.status === "OK") {
+          alert("保存成功")
+        }
+      })
+
+      console.log(this.currentFilePath);
     }
   }
 

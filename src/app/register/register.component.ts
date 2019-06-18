@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../_services';
 
+import { FileHandlerService } from "./../../services/file-handler/file-handler.service"
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
+      private fileService: FileHandlerService
   ) { }
 
   ngOnInit() {
@@ -50,8 +52,11 @@ export class RegisterComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  if(data.message === "success")
+                  if(data.message === "success"){
+                    this.fileService.generateUserPath(this.f.username.value)
+                    .subscribe(data => {});
                     this.router.navigate([this.returnUrl]);
+                  }
                   else {
                     this.error = data.message;
                     this.loading = false;
