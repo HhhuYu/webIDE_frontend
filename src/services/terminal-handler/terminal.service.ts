@@ -6,7 +6,7 @@ import { Socket } from 'ngx-socket-io';
   providedIn: 'root'
 })
 
-export class TerminalService {
+export class TerminalService  {
   isConnect = this.socket.fromEvent<any>('connect');
   response = this.socket.fromEvent<any>('response');
   over = this.socket.fromEvent<any>('over');
@@ -21,6 +21,7 @@ export class TerminalService {
   ready() {
     this.socket.emit('command', 'clear');
   }
+
 
 
 
