@@ -26,7 +26,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash.isequal": "^4.5.0",
     "ng-terminal": "^2.0.4",
     "ng2-dnd": "^5.0.2",
